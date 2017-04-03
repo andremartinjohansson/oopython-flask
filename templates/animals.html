@@ -1,0 +1,54 @@
+{% include 'header.html' %}
+
+        <div class="container" role="main">
+            <div class="page-header">
+                <h1>Animals</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>id</th>
+                        <th>Species</th>
+                        <th>Name</th>
+                        <th>Number of Legs</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {{ animals_table|safe }}
+                    </tbody>
+                  </table>
+                  <div class="row">
+                  {% with messages = get_flashed_messages() %}
+                     {% if messages %}
+                        <ul>
+                           {% for message in messages %}
+                           <li class="alert-success">{{ message }}</li>
+                           {% endfor %}
+                        </ul>
+                     {% endif %}
+                  {% endwith %}
+                    <h3>Lägg till djur</h3>
+                    <form role="form" method="POST" action="animals">
+                        <div class="form-group">
+                            <label for="species">Species: </label>
+                            <input type="text" name="species" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name: </label>
+                            <input type="text" name="name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nr_of_legs">Number of legs: </label>
+                            <input type="number" name="nr_of_legs" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-default">Lägg till</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+{% include 'footer.html' %}

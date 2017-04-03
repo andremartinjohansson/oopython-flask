@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ title }} | André Johansson | oopython</title>
+
+    <link rel="icon" href="{{ favicon }}">
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Private stylesheet, loads last -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+
+</head>
+
+<body role="document">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">André's Me-sida</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li {%- if request.path == "/" %} class="active" {% endif %}><a href="{{ main }}">Hem</a></li>
+            <li {%- if request.path == "/about" %} class="active" {% endif %}><a href="{{ about }}">Om mig</a></li>
+            <li {%- if request.path == "/report" %} class="active" {% endif %}><a href="{{ report }}">Redovisningar</a></li>
+            <li {%- if request.path == "/farm" or request.path == "/humans" or request.path == "/animals" or request.path == "/vehicles" %} class="active" {% endif %}><a href="{{ farm }}">Bondgård</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-flash">
+        <div class="row">
+            <span class="date">{{ date }}</span>
+            <img class="img-responsive" src="static/images/laptop.jpg" alt="Flash image">
+        </div>
+    </div>
